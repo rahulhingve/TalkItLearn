@@ -1,5 +1,6 @@
 
 import './App.css'
+import AILanguageTutor from './components/ai-language-tutor'
 
 function App() {
 
@@ -7,7 +8,7 @@ function App() {
   return (
     <>
       <div>
-        hello
+        <AILanguageTutor/>
       </div>
     </>
   )
