@@ -5,29 +5,31 @@ import { Card, CardContent } from "./ui/card"
 import { Slider } from "./ui/slider"
 
 const rolePlayOptions = [
-  "'Medical'",
-  "'Role-play as Girlfriend'",
-  "'Role-play as Boyfriend'",
-  "'Role-play as Spouse'",
-  "'Role-play as Lover'",
-  "'Role-play as Bus Driver'",
+  "Medical",
+  "Role-play as Girlfriend",
+  "Role-play as Boyfriend",
+  "Medical boy",
+  "Role-play as teacher",
+  "Role-play as bank",
+
 ]
 
 export default function AILanguageTutor() {
-  const [selectedRole, setSelectedRole] = useState("''")
+  const [selectedRole, setSelectedRole] = useState("")
+  const [input , setInput] = useState("")
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-500  p-4">
       <Card className="w-full max-w-3xl shadow-lg">
-        <CardContent className="p-6">
+        <CardContent className="p-6 bg-gray-700" >
           {/* Instructor Panel */}
           <div className="flex items-center mb-6">
-            <div className="w-20 h-20 rounded-full bg-teal-100 mr-4"></div>
+            <div className="w-20 h-20 rounded-full bg-slate-300 mr-4"></div>
             <div>
               <h2 className="text-xl font-semibold">Samantha Williams</h2>
               <div className="flex items-center">
                 <Flag className="w-4 h-4 mr-2 text-teal-600" />
-                <span className="text-sm text-gray-600">English (US)</span>
+                <span className="text-sm text-gray-100">English (US)</span>
               </div>
             </div>
             <Button variant="ghost" className="ml-auto">
@@ -38,13 +40,14 @@ export default function AILanguageTutor() {
 
           {/* Chat Interface */}
           <Card className="mb-4">
-            <CardContent className="p-4">
+            <CardContent className="p-4 bg-zinc-500 rounded-lg">
               <Button variant="link" className="mb-2 text-xs">
                 View More Chat History
               </Button>
               <p className="text-sm">
                 Hello! I am Samantha Williams, your personal language tutor. I can help you improve your American English skills and grammar through conversations or role-play. How has your day been so far?
               </p>
+              
             </CardContent>
           </Card>
 
@@ -54,7 +57,7 @@ export default function AILanguageTutor() {
               {rolePlayOptions.map((role) => (
                 <Button
                   key={role}
-                  variant={selectedRole === role ? "'default'" : "'outline'"}
+                  variant={selectedRole === role ? "default" : "outline"}
                   onClick={() => setSelectedRole(role)}
                   className="whitespace-nowrap"
                 >
@@ -63,12 +66,23 @@ export default function AILanguageTutor() {
               ))}
             </div>
           </div>
+<div>
+  cheching input here <br/>
+  {input}
+</div>
+          {/* Input box */}
+
+          <div className="w-full  ">
+            <textarea onChange={(e)=>{
+              setInput(e.target.value)
+            }} className="text-white bg-gray-500 text-wrap w-full  placeholder:text-slate-400  text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow" placeholder="Type here..." />
+          </div>
 
           {/* Hold to Speak Button */}
           <div className="flex justify-center mb-4">
-            <Button className="rounded-full w-16 h-16 bg-teal-500 hover:bg-teal-600">
-              <Mic className="w-8 h-8 text-white" />
-              <span className="sr-only">Hold to Speak</span>
+            <Button className="rounded-full w-16 h-16 bg-black hover:bg-white">
+              <Mic className="w-8 h-8 text-black hover:bg-white" />
+              <span className="sr-only text-white">Hold to Speak</span>
             </Button>
           </div>
 
